@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block contant %}
+
+<h2>All Product </h2>
+
+<a href={% url 'Product_add' %}>
+    <button>Add Product</button>
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Code</th>
+            <th>Price</th>
+            <th>GST</th>
+            <th>Picture</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in all_products %}
+
+            <tr>
+                <td>{{product.product_name}}</td>
+                <td>{{product.product_code}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.gst}}</td>
+                <td>
+                    {% if product.picture %}
+                        <img src="{{product.picture.url}}" alt="{{product.picture}}" width="100px">
+                    {% else %}
+                        No Picture
+                    {% endif %}
+                </td>
+                <td>
+                    <a href={% url 'UpdateProduct' product.id %}>
+                        <button>Update</button>
+                    </a>
+                </td>
+                <td>
+                    <a href={% url 'deleteProduct' product.id %}>
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

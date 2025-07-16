@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} {% block contant %}
+<h2>All Customers</h2>
+
+<a href="{% url 'addcustomer' %}">
+  <button>Add Customer</button>
+</a>
+
+<div>
+  <img
+    src="{% static 'assets/images/wall.jpg'%}"
+    alt="streetwall"
+    width="200"
+    height="200"
+  />
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Customer Since</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in all_customer %}
+      <tr>
+        <td>{{ customer.customer_name }}</td>
+        <td>{{ customer.customer_since }}</td>
+        <td>
+          <a href="{% url 'updatecustomer' customer.id %}">
+            <button>Update</button>
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'deletecustomer' customer.id %}">
+            <button>Delete</button>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

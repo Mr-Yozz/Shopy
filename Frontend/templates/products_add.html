@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contant %}
+
+<h2>Product Adding Page</h2>
+
+<a href={% url 'allProducts' %}>
+    <button>Back</button>
+</a>
+<div class="comtainer">
+    <form action="" method="POST" class="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{product_form}}
+        <br><br>
+        <input type="submit" value="Add Product">
+    </form>
+</div>
+
+
+{% endblock %}

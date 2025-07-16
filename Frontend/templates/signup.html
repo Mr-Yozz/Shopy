@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+  </head>
+  <body>
+    <form action="" method="POST">
+      {% csrf_token %}
+
+      <h1 class="h3 mb-3 fw-normal">Please Signup</h1>
+      <div class="form-floating mb-2">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          name="username"
+          placeholder="Username"
+          required
+        />
+        <label for="floatingInput">Username</label>
+      </div>
+
+      <p class="text-danger fw-bold">{{error}}</p>
+
+      <div class="form-floating mb-2">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          name="firstname"
+          placeholder="Vijay"
+          required
+        />
+        <label for="floatingInput">FirstName</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          name="lastname"
+          placeholder="kumar"
+          required 
+        />
+        <label for="floatingInput">LastName</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          name="age"
+          placeholder="23"
+          required
+        />
+        <label for="floatingInput">Age</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          name="email"
+          placeholder="ex@gmail.com"
+          required
+        />
+        <label for="floatingInput">Email</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="floatingrole" name="role" required>
+          <option value="0">Admin</option>
+          <option value="1">Manager</option>
+          <option value="2">Employee</option>
+        </select>
+        <label for="floatingrole">User-Role</label>
+      </div>
+      <div class= "form-floating mb-3">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Signup</button>
+    </form>
+  </body>
+</html>
