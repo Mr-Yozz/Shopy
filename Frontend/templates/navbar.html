@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Shopy!</a>
+        <a class="navbar-brand fw-bold text-primary" href="#" >Shopy!</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -39,9 +39,16 @@
             <li class="nav-item">
               <a class="nav-link active" href="{% url "signup" %}">Create User</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="{% url "logout" %}">Logout</a>
-            </li>
+            
+            {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url "logout" %}">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url "login" %}">Login</a>
+              </li>
+            {% endif %}
           </ul>
         </div>
       </div>

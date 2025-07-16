@@ -8,7 +8,7 @@ def LoginPage(request):
 
     if request.user.is_authenticated :
 
-        return redirect('/inventory/home/')
+        return redirect('home')
 
     context={
        "error" : ""
