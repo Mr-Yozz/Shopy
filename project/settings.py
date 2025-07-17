@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-mgns!lklizex4nrv#3uknnlnz2e(cx$^yop)#yl3a4dfoeh=n$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.railway.app']
+ALLOWED_HOSTS = ['shopy-production-32c5.up.railway.app']
 
 
 # Application definition
