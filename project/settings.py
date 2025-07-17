@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import pymysql
+import dj_database_url
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
+# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 
 # Application definition
@@ -80,20 +82,23 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'railway',
+#         'USER': 'root',
+#         'PASSWORD': 'OcNYDYJBTeJeGggsVOeHNVmQXEyZweEc',
+#         'HOST': 'switchyard.proxy.rlwy.net',
+#         'PORT': '16792',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'OcNYDYJBTeJeGggsVOeHNVmQXEyZweEc',
-        'HOST': 'switchyard.proxy.rlwy.net',
-        'PORT': '16792',
-    }
+    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 # mysql://root:OcNYDYJBTeJeGggsVOeHNVmQXEyZweEc@switchyard.proxy.rlwy.net:16792/railway
 
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
+DEBUG = os.environ.get('DEBUG') == 'True'
+SECRET_KEY = os.environ.get('SECRET_KEY', "fallback-secret")
 
 
 # Password validation
