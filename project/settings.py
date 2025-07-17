@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shopy-production-32c5.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,13 +83,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT', '3306'),
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'OcNYDYJBTeJeGggsVOeHNVmQXEyZweEc',
+        'HOST': 'switchyard.proxy.rlwy.net',
+        'PORT': '16792',
     }
 }
+# mysql://root:OcNYDYJBTeJeGggsVOeHNVmQXEyZweEc@switchyard.proxy.rlwy.net:16792/railway
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
